@@ -40,10 +40,7 @@ def read_text_or_file(title):
         print("Invalid choice. Try again.")
         return read_text_or_file(title)
 
-
-# -------------------------------
-#  File Readers
-# -------------------------------
+# file reading
 def read_file(path):
     if path.endswith(".txt"):
         return read_txt(path)
