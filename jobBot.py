@@ -1,7 +1,7 @@
 import os
 import requests
 import sys
-import PyPDF2
+import PyPDF2 # type: ignore
 import docx
 from dotenv import load_dotenv
 
