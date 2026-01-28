@@ -29,5 +29,34 @@ def get_user_by_id(user_id):
         cursor.close()
         db.close()
 
-result2 = get_user_by_id(4)
-print(result2)
+def update_user(user_id, name, email):
+    try:
+        db = get_db()
+        cursor = db.cursor(dictionary=True)
+        
+        query = "update tbluser set name=%s, email=%s where id=%s"
+        cursor.execute(query, (name, email, user_id))
+        db.commit()
+        
+        return {"message": "user updated successfully"}
+    except Error as e: # type: ignore
+        return {"error": str(e)}
+    finally:
+        cursor.close()
+        db.close()
+
+def delete_user(user_id):
+    try:
+        db = get_db()
+        cursor = db.cursor(dictionary=True)
+        
+        query = "delete from tbluser where id=%s"
+        cursor.execute(query, (user_id,))
+        db.commit()
+        
+        return {"message": "user deleted successfully"}
+    except Error as e: # type: ignore
+        return {"error": str(e)}
+    finally:
+        cursor.close()
+        db.close()
